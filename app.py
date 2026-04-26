@@ -34,9 +34,10 @@ def predict():
         prob = float(model.predict_proba(final)[0][1])
         pred = 1 if prob > 0.5 else 0
         
-        if prob < 0.3:
+        # UPDATED thresholds for better risk distribution
+        if prob < 0.15:
             risk = "Low"
-        elif prob < 0.6:
+        elif prob < 0.35:
             risk = "Moderate"
         else:
             risk = "High"
