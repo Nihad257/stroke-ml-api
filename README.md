@@ -102,7 +102,7 @@ Dataset → ML Training → Saved Model (.pkl)
 ```json
 {
   "prediction": 1,
-  "probability": 46.0,
+  "probability": 46.0%,
   "risk_level": "High"
 }
 ```
