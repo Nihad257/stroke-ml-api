@@ -6,6 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, roc_auc_score
 import joblib
 import os
+from xgboost import XGBClassifier
 
 print("="*50)
 print("STROKE PREDICTION MODEL TRAINING")
@@ -65,10 +66,17 @@ smote = SMOTE(random_state=42)
 X_train, y_train = smote.fit_resample(X_train, y_train)
 print(f"After SMOTE: {len(X_train)} training samples (balanced)")
 
-model = RandomForestClassifier(n_estimators=100, random_state=42)
+# XGBoost with scale_pos_weight for imbalance
+scale_weight = len(y_train[y_train == 0]) / len(y_train[y_train == 1])
+
+model = RandomForestClassifier(
+    n_estimators=200,
+    max_depth=10,
+    class_weight='balanced',
+    random_state=42
+)
 model.fit(X_train, y_train)
 print("✅ Model trained!")
-
 # 9. Evaluate
 print("\n[7/8] Evaluating model...")
 y_pred = model.predict(X_test)
