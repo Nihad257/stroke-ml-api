@@ -46,7 +46,17 @@ Dataset → ML Training → Saved Model (.pkl)
 | Artifacts Saved    | `stroke_model.pkl`, `scaler.pkl`, `encoder.pkl`, `feature_names.pkl` |
 
 ---
+## 📈 Model Performance
 
+| Metric | Score |
+|--------|-------|
+| Best Model | Random Forest |
+| ROC-AUC | 0.782 |
+| Accuracy | 0.84 |
+| Stroke Recall | 0.44 |
+| Class Balancing | SMOTE + class_weight='balanced' |
+
+---
 ## 🛠️ Tech Stack
 
 | Layer       | Technology                          |
@@ -101,7 +111,7 @@ Dataset → ML Training → Saved Model (.pkl)
 
 ```json
 {
-  "prediction": 1,
+  "prediction": 0,
   "probability": 46.0,
   "risk_level": "High"
 }
