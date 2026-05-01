@@ -34,13 +34,12 @@ def predict():
         prob = float(model.predict_proba(final)[0][1])
         pred = 1 if prob > 0.5 else 0
         
-        # UPDATED thresholds for better risk distribution
-      if prob < 0.20:
-    risk = "Low"
-elif prob < 0.60:
-    risk = "Moderate"
-else:
-    risk = "High"
+        if prob < 0.20:
+            risk = "Low"
+        elif prob < 0.60:
+            risk = "Moderate"
+        else:
+            risk = "High"
         
         return jsonify({
             "prediction": pred,
