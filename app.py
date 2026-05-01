@@ -35,12 +35,12 @@ def predict():
         pred = 1 if prob > 0.5 else 0
         
         # UPDATED thresholds for better risk distribution
-        if prob < 0.15:
-            risk = "Low"
-        elif prob < 0.35:
-            risk = "Moderate"
-        else:
-            risk = "High"
+      if prob < 0.20:
+    risk = "Low"
+elif prob < 0.60:
+    risk = "Moderate"
+else:
+    risk = "High"
         
         return jsonify({
             "prediction": pred,
